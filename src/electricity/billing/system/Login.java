@@ -2,8 +2,10 @@ package electricity.billing.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
 
     JTextField userText,passwordText;
     Choice loginChoice;
@@ -44,14 +46,17 @@ public class Login extends JFrame {
 
         loginButton = new JButton("Sign in");
         loginButton.setBounds(330,175, 100 , 20);
+        loginButton.addActionListener(this);
         add(loginButton);
 
         cancelButton = new JButton("Cancel");
         cancelButton.setBounds(450,175, 100 , 20);
+        cancelButton.addActionListener(this);
         add(cancelButton);
 
         signUpButton = new JButton("Sign Up");
         signUpButton.setBounds(400,210, 100 , 20);
+        signUpButton.addActionListener(this);
         add(signUpButton);
 
         ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("icon/profile.png"));
@@ -65,6 +70,20 @@ public class Login extends JFrame {
         setLocation(400,200);
         setLayout(null);
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==loginButton){
+
+        }
+        else if(e.getSource()==cancelButton){
+            setVisible(false);
+        }
+        else if(e.getSource()==signUpButton){
+            setVisible(false);
+            new Signup();
+        }
     }
 
     public static void main(String[] args) {
